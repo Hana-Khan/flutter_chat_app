@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants.dart';
+import 'package:flutter_chat_app/presentation/screens/screen_inbox.dart';
 import 'package:flutter_chat_app/presentation/widgets/clipper.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -166,7 +167,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                     Icons.arrow_forward,
                                     color: Colors.black,
                                   ),
-                                  onPressed: () => {},
+                                  onPressed: () => {
+                                    Navigator.push(
+                                      context, 
+                                      MaterialPageRoute(builder: (context) => InboxScreen()),)
+                                  },
                                 ),
                               ),
                             )
