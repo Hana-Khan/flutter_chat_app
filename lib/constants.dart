@@ -28,3 +28,16 @@ const kMessageContainerDecoration = BoxDecoration(
     top: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
   ),
 );
+
+ const kTitleTextStyle = TextStyle(
+    fontFamily: 'Montserrat',
+    color: Color(0xff333333),
+    fontSize: 16.0,
+    fontWeight: FontWeight.w600,
+  );
+
+const ksubtitleTextStyle = TextStyle(
+  fontSize: 13,
+  fontWeight: FontWeight.normal,
+  color: Color(0xff818181)
+);

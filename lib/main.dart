@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_chat_app/presentation/screens/login.dart';
-import 'package:flutter_chat_app/presentation/screens/user_profile.dart';
-import 'package:flutter_chat_app/presentation/screens/wrapper.dart';
-import 'cubits/authentication/authentication_cubit.dart';
+import 'package:flutter_chat_app/cubits/authentication/authentication_cubit.dart';
+
+import 'presentation/screens/screen_home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +27,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: UserProfile(),
+        home: HomeScreen(),
+        // home: Wrapper(),
       ),
     );
   }

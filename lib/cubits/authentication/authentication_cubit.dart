@@ -23,13 +23,17 @@ class AuthenticateUserCubit extends Cubit<AuthenticateUserState>
 
   void registerUser({required String email, required String password}) async {
     myUser = await userAuthenticationRepo.registerUser(
-        email: email, password: password, authRegistrationListener: this);
+        email: email, 
+        password: password, 
+        authRegistrationListener: this);
   }
 
   // logging is User
   void loginUser({required String email, required String password}) async {
     myUser = await userAuthenticationRepo.signInInEmailAndPassword(
-        email: email, password: password, authRegistrationListener: this);
+        email: email, 
+        password: password, 
+        authRegistrationListener: this);
     final SharedPreferences prefs = await _prefs;
     prefs.setBool('isLogin', true);
   }

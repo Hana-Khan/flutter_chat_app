@@ -31,11 +31,15 @@ dependencies:
   cloud_firestore:
   firebase_auth:
   google_sign_in:
-  flutter_bloc:
-  equatable:
   meta:
   shared_preferences: ^2.0.6
 
+
+  # cubit state management
+  flutter_bloc: ^7.1.0
+
+  # equatable
+  equatable: ^2.0.3
 
 dev_dependencies:
   flutter_test:
