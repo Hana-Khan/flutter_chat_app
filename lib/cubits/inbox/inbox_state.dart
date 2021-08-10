@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_chat_app/data/model/message.dart';
+import 'package:flutter_chat_app/data_repo/models/message_model.dart';
 
 abstract class InboxState extends Equatable {
   const InboxState();

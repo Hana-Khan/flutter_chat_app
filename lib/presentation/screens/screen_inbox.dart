@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants.dart';
 import 'package:flutter_chat_app/presentation/screens/screen_chat.dart';
 import 'package:flutter_chat_app/presentation/widgets/clipper.dart';
+import 'package:flutter_chat_app/presentation/widgets/navigation_bar.dart';
 import 'package:flutter_chat_app/utilities/SizeConfig.dart';
+import 'package:flutter_chat_app/utilities/colors.dart';
 
 class InboxScreen extends StatefulWidget {
   final Color? backgroundColor;
@@ -17,6 +19,7 @@ class _InboxScreenState extends State<InboxScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigation(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -28,27 +31,26 @@ class _InboxScreenState extends State<InboxScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-              ClipPath(
-                clipper: MyClipper(),
+              Container(
+                color: white,
+                alignment: Alignment.center,
+                height: SizeConfig.convertHeight(context, 50),
                 child: Container(
-                  decoration: BoxDecoration(
-                    image: new DecorationImage(
-                      image: AssetImage('assets/full_bloom.png'),
-                      fit: BoxFit.cover,
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                      'Inbox',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        color: selectedColor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w600,
+                      )
                     ),
                   ),
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.only(top: 30.0, bottom: 30.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'Inbox',
-                        style: kHeadingStyle.copyWith(fontSize: 20.0),
-                      ),
-                    ],
-                  ),
-                ),
+              ),
+              SizedBox(
+                height:SizeConfig.convertHeight(context, 10),
               ),
               Container(
                 height: SizeConfig.convertHeight(context, 500),

@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_chat_app/cubit/inbox%20state.dart';
-import 'package:flutter_chat_app/data/repository/messages_repository.dart';
+import 'package:flutter_chat_app/cubits/inbox/inbox_state.dart';
+import 'package:flutter_chat_app/data_repo/repository/messages_repository.dart';
 
 class InboxCubit extends Cubit<InboxState>{
   final MessageRepository  repository;
@@ -19,6 +19,6 @@ class InboxCubit extends Cubit<InboxState>{
     }catch (e) {
       emit(InboxErrorState());
     }
-
+    
   }
 }
