@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat_app/cubits/authentication/authentication_cubit.dart';
-import 'package:flutter_chat_app/presentation/screens/authentication.dart';
+import 'package:flutter_chat_app/presentation/screens/login.dart';
 import 'package:flutter_chat_app/presentation/screens/screen_chat.dart';
+import 'package:flutter_chat_app/presentation/screens/user_profile.dart';
 
 class Wrapper extends StatefulWidget {
   @override
@@ -22,9 +23,9 @@ class _WrapperState extends State<Wrapper> {
         future: getLoginStatus(),
         builder: (context, snapshot) {
           if (snapshot.data == true) {
-            return ChatScreen();
+            return UserProfile();
           } else {
-            return AuthenticationScreen();
+            return LoginUser();
           }
         });
   }

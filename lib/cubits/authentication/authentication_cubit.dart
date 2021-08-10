@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_chat_app/data_repo/authentication_repo.dart';
+import '../../data_repo/repositories/authentication_repo.dart';
 import 'package:flutter_chat_app/data_repo/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

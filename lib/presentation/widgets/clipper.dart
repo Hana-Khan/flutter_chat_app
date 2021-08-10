@@ -5,9 +5,9 @@ class MyClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     Path p = new Path();
     p.lineTo(size.width, 0.0);
-    p.lineTo(size.width, size.height * 0.85);
+    p.lineTo(size.width, size.height * 0.1);
     p.arcToPoint(
-      Offset(0.0, size.height * 0.85),
+      Offset(0.0, size.height * 0.65),
       radius: const Radius.elliptical(50.0, 10.0),
       rotation: 0.0,
     );
