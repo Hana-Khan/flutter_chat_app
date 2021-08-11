@@ -2,10 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_chat_app/data_repo/models/user_model.dart';
 import 'package:flutter_chat_app/data_repo/repositories/authentication_repo.dart';
-import 'package:flutter_chat_app/data_repo/repositories/user_repostory_interface.dart';
 
 class UserRepository 
-// implements IUserRepository 
 {
   final firestoreInstance = FirebaseFirestore.instance;
   
@@ -30,9 +28,8 @@ class UserRepository
   }
 
   
-  // @override
   // Future<MyUser> getUser() async {
-
+  //   return 
   // }
 
 
