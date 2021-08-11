@@ -1,5 +1,5 @@
 import 'package:flutter_chat_app/data_repo/models/message_model.dart';
-import '../repository/messages_repository_interface.dart';
+import '../repositories/messages_repository_interface.dart';
 
 class MessageRepository implements IMessagesRepository{
   @override

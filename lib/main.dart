@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_chat_app/cubits/authentication/authentication_cubit.dart';
+import 'package:flutter_chat_app/presentation/screens/wrapper.dart';
 
 import 'presentation/screens/screen_home.dart';
 
@@ -27,8 +28,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomeScreen(),
-        // home: Wrapper(),
+        // home: HomeScreen(),
+        home: Wrapper(),
       ),
     );
   }

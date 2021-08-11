@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat_app/constants.dart';
-import 'package:flutter_chat_app/cubits/authentication/authentication_cubit.dart';
+import 'package:flutter_chat_app/presentation/widgets/navigation_bar.dart';
+import 'package:flutter_chat_app/utilities/colors.dart';
 
 class UserProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: screenBackground,
+      bottomNavigationBar: BottomNavigation(),
       appBar: AppBar(
-        elevation: 3.0,
         title: Text(
           'Profile',
           style: kTextFieldStyle.copyWith(color: Colors.black, fontSize: 18),

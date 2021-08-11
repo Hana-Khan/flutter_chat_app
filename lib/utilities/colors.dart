@@ -39,8 +39,6 @@ Color searchMapColor=Color.fromRGBO(173, 171, 171, 0.3);
 Color labelColor=Color.fromRGBO(113, 113, 113, 1);
 Color inactiveSliderColor=Color.fromRGBO(196, 196, 196, 1);
 Color noThanksTextColor=Color.fromRGBO(124, 124, 124, 1);
-// rgba(48, 255, 57, 1)
-
 Color darkGray = Color.fromRGBO(51, 51, 51, 1);
 Color screenBackground = Color.fromRGBO(249, 249, 249, 1);
 Color lightGrayish = Color.fromRGBO(220, 220, 220, 1);
