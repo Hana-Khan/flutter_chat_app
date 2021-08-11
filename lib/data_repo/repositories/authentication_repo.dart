@@ -33,6 +33,7 @@ class UserAuthenticationRepo {
     return uid;
   }
 
+
   Future<MyUser?> registerUser(
       {required String email,
       required String password,
