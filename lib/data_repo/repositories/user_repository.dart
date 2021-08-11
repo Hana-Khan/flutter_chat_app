@@ -36,7 +36,6 @@ class UserRepository {
     DocumentSnapshot userDetails=await userCollection.doc('F4AlW64oqbeL4j2Fjjc2xn2FPHc2').get();
     print('userdeatils');
     final user=MyUser.fromSnapshot(userDetails);
-    print('mapped Myuser');
     print(user);
     return user;
   }

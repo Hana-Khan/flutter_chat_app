@@ -29,19 +29,9 @@ class MyUser extends Equatable {
     userId = snapshot['userId'] ?? '';
     userName = snapshot['userName'] ?? '';
     userEmail = snapshot['userEmail'] ?? '';
-    userContactNumber=snapshot['userContactNumber']??'';
+    userImage = snapshot['userContactNo'] ?? '';
     userGender = snapshot['userGender'] ?? '';
     userAbout = snapshot['userAbout'] ?? '';
-    // userImage = snapshot['userImage'] ?? '';
-  }
-
-  MyUser.fromJson(Map<dynamic, dynamic> snapshot){
-   userId = snapshot['userId'];
-    userName = snapshot['userName'] ?? '';
-    userEmail = snapshot['userEmail'] ?? '';
-    userImage = snapshot['userImage'] ?? '';
-    userGender = snapshot['Gender'] ?? '';
-    userAbout = snapshot['bioText'] ?? '';
   }
   
   Map<String, dynamic> toMap() {
@@ -54,4 +44,20 @@ class MyUser extends Equatable {
       'userAbout': userAbout,
     };
   }
+
+  MyUser.fromJson(Map<dynamic, dynamic> snapshot) {
+   userId = snapshot['userId'] ?? '';
+    userName = snapshot['userName'] ?? '';
+    userEmail = snapshot['userEmail'] ?? '';
+    userImage = snapshot['userContactNo'] ?? '';
+    userGender = snapshot['userGender'] ?? '';
+    userAbout = snapshot['userAbout'] ?? '';
+  }
 }
+
+// userId = snapshot.get('userId') ?? '';
+// userName = snapshot.get('userName') ?? '';
+// userEmail = snapshot.get('userEmail') ?? '';
+// userImage = snapshot.get('userGender') ?? '';
+// userGender = snapshot.get('userContactNo') ?? '';
+// userAbout = snapshot.get('userAbout') ?? '';
