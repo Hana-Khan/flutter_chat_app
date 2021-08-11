@@ -19,6 +19,7 @@ class _InboxScreenState extends State<InboxScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: screenBackground,
       bottomNavigationBar: BottomNavigation(),
       body: SafeArea(
         child: SingleChildScrollView(

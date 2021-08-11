@@ -17,59 +17,57 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: GestureDetector(
-        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: Scaffold(
-          bottomNavigationBar: BottomNavigation(),
-          body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-              Container(
-                color: white,
-                alignment: Alignment.center,
-                height: SizeConfig.convertHeight(context, 50),
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  child: Text(
-                      'Chat',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'Montserrat',
-                        color: selectedColor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w600,
-                      )
-                    ),
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        bottomNavigationBar: BottomNavigation(),
+        body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+            Container(
+              color: white,
+              alignment: Alignment.center,
+              height: SizeConfig.convertHeight(context, 50),
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: Text(
+                    'Chat',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      color: selectedColor,
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w600,
+                    )
                   ),
-              ),
-              SizedBox(
-                height:SizeConfig.convertHeight(context, 10),
-              ),
-              Container(
-                height: SizeConfig.convertHeight(context, 400),
-                width: SizeConfig.convertWidth(context, 389),
-                child: ListView.builder(
-                padding: EdgeInsets.only(left: 10,right: 8),
-                itemCount: 10,
-                itemBuilder: (context, int index){
-                  return MessageBubble(
-                      message:'Hello', 
-                      isMe:index%2==0?true:false
-                    );
-                  }
                 ),
+            ),
+            SizedBox(
+              height:SizeConfig.convertHeight(context, 10),
+            ),
+            Container(
+              height: SizeConfig.convertHeight(context, 400),
+              width: SizeConfig.convertWidth(context, 389),
+              child: ListView.builder(
+              padding: EdgeInsets.only(left: 10,right: 8),
+              itemCount: 10,
+              itemBuilder: (context, int index){
+                return MessageBubble(
+                    message:'Hello', 
+                    isMe:index%2==0?true:false
+                  );
+                }
               ),
-            _buildMessageBox()
-                ]
-              )
+            ),
+          _buildMessageBox()
+              ]
             )
           )
         )
-      ),
+      )
     );
   }
 }

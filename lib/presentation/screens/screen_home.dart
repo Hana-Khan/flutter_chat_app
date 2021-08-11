@@ -36,11 +36,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: screenBackground,
-        bottomNavigationBar: BottomNavigation(),
-        body: SingleChildScrollView(
+    return Scaffold(
+      backgroundColor: screenBackground,
+      bottomNavigationBar: BottomNavigation(),
+      body: SafeArea(
+        child: SingleChildScrollView(
           physics: NeverScrollableScrollPhysics(),
           padding: EdgeInsets.only(
             // top:SizeConfig.convertHeight(context, 20),
@@ -127,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-      ),  
+      ),
     );
   }
 }

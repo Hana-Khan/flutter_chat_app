@@ -1,7 +1,7 @@
 import 'package:flutter_chat_app/data_repo/models/message_model.dart';
-import 'package:flutter_chat_app/data_repo/repositories/messages_repository_interface.dart';
+import '../repositories/messages_repository_interface.dart';
 
-class MessageRepository implements IMessagesRepository {
+class MessageRepository implements IMessagesRepository{
   @override
   Future<List<MessageModel>> getMessages() {
     // TODO: implement getMessages
@@ -13,4 +13,5 @@ class MessageRepository implements IMessagesRepository {
     // TODO: implement addMessages
     throw UnimplementedError();
   }
+  
 }
