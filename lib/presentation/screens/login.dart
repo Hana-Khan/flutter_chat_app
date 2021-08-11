@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat_app/constants.dart';
 import 'package:flutter_chat_app/cubits/authentication/authentication_cubit.dart';
+import 'package:flutter_chat_app/presentation/screens/home.dart';
 import 'package:flutter_chat_app/presentation/screens/sign_up.dart';
 import 'package:flutter_chat_app/presentation/screens/user_profile.dart';
 import 'package:flutter_chat_app/presentation/widgets/auth_background.dart';
@@ -39,7 +40,7 @@ class _LoginUserState extends State<LoginUser> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => UserProfile(),
+                builder: (context) => HomeScreen(),
               ),
             );
             break;

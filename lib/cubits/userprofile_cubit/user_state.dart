@@ -9,7 +9,8 @@ import 'package:equatable/equatable.dart';
 //   List<Object> get props => [];
 // }
 
-enum AuthenticateUserState {
+enum UserCubitState {
+  initial,
   usersLoaded,
   userInfoLoaded,
   userLoadingFailed,

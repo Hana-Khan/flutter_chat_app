@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_chat_app/cubits/userprofile_cubit/user_state.dart';
 
 abstract class UserListener {
   void usersLoaded();
@@ -9,8 +10,8 @@ abstract class UserListener {
   void noUsers();
 }
 
-class UserCubit extends Cubit<UserCubit> implements UserListener {
-  UserCubit(UserCubit initialState) : super(initialState);
+class UserCubit extends Cubit<UserCubitState> implements UserListener {
+  UserCubit(UserCubitState initialState) : super(initialState);
 
   getListOfUsers() {}
 

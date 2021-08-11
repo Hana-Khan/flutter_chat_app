@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_app/presentation/screens/screen_home.dart';
-import 'package:flutter_chat_app/presentation/screens/screen_inbox.dart';
+import 'package:flutter_chat_app/presentation/screens/home.dart';
+import 'package:flutter_chat_app/presentation/screens/inbox.dart';
 import 'package:flutter_chat_app/presentation/screens/user_profile.dart';
 import 'package:flutter_chat_app/utilities/SizeConfig.dart';
 import 'package:flutter_chat_app/utilities/colors.dart';
