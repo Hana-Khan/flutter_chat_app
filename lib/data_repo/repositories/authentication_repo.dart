@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_chat_app/cubits/authentication/authentication_cubit.dart';
 import 'package:flutter_chat_app/data_repo/models/user_model.dart';
+import 'package:flutter_chat_app/data_repo/repositories/user_repository.dart';
 
 class UserAuthenticationRepo {
   final FirebaseAuth? _firebaseAuth;
+  final _userRepository = UserRepository();
 
   UserAuthenticationRepo({FirebaseAuth? firebaseAuth})
       : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
@@ -16,7 +18,7 @@ class UserAuthenticationRepo {
     try {
       var userCredential = await _firebaseAuth!
           .signInWithEmailAndPassword(email: email, password: password);
-      authRegistrationListener.success();
+      authRegistrationListener.loginSuccess();
       return MyUser(
           id: userCredential.user!.uid, email: userCredential.user!.email);
     } on FirebaseException catch (e) {
@@ -26,20 +28,30 @@ class UserAuthenticationRepo {
 
   String? userData() {
     final User? user = _firebaseAuth!.currentUser;
-    final String? uid = user!.uid;
+    final String? uid = user!.displayName;
     return uid;
   }
 
   Future<MyUser?> registerUser(
       {required String email,
       required String password,
+      required String name,
+      required String gender,
+      required String contactNo,
+      required String description,
       required AuthRegistrationListener authRegistrationListener}) async {
     authRegistrationListener.loading();
     try {
       UserCredential userCredential = await _firebaseAuth!
           .createUserWithEmailAndPassword(email: email, password: password);
       _firebaseAuth!.signOut();
-      authRegistrationListener.success();
+
+      // create user document in user collection through user repository class
+      await _userRepository.createUserDocument(userCredential.user!.uid, name,
+          email, gender, contactNo, description);
+
+      authRegistrationListener.registrationSuccess();
+
       return MyUser(
           id: userCredential.user!.uid, email: userCredential.user!.email);
     } on FirebaseAuthException catch (e) {

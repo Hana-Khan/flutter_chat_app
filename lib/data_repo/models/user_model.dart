@@ -2,11 +2,13 @@ import 'package:equatable/equatable.dart';
 
 class MyUser extends Equatable {
   /// {@macro user}
-  const MyUser({
-    required this.id,
-    this.email,
-    this.name,
-  });
+  const MyUser(
+      {required this.id,
+      this.email,
+      this.name,
+      this.about,
+      this.contactNumber,
+      this.gender});
 
   final String? email;
 
@@ -14,12 +16,10 @@ class MyUser extends Equatable {
 
   final String? name;
 
-  static const empty = MyUser(id: '');
-
-  bool get isEmpty => this == MyUser.empty;
-
-  bool get isNotEmpty => this != MyUser.empty;
+  final String? gender;
+  final String? contactNumber;
+  final String? about;
 
   @override
-  List<Object?> get props => [email, id, name];
+  List<Object?> get props => [email, id, name, contactNumber, gender, about];
 }

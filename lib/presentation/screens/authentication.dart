@@ -35,7 +35,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
     return BlocConsumer<AuthenticateUserCubit, AuthenticateUserState>(
       listener: (context, state) {
         switch (state) {
-          case AuthenticateUserState.success:
+          case AuthenticateUserState.loginSuccess:
             if (login) {
               showSnackBar(
                   'Login Successful ${context.read<AuthenticateUserCubit>().myUser!.email}');
@@ -225,12 +225,12 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                                                 password:
                                                     _passwordController.text);
                                       } else {
-                                        context
-                                            .read<AuthenticateUserCubit>()
-                                            .registerUser(
-                                                email: _emailController.text,
-                                                password:
-                                                    _passwordController.text);
+                                        // context
+                                        //     .read<AuthenticateUserCubit>()
+                                        //     .registerUser(
+                                        //         email: _emailController.text,
+                                        //         password:
+                                        //             _passwordController.text);
                                       }
                                     },
                                   ),

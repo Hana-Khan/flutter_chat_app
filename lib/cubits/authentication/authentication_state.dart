@@ -5,4 +5,11 @@ part of 'authentication_cubit.dart';
 //
 // class RegisterInitial extends RegisterState {}
 
-enum AuthenticateUserState { success, user_exists, failed, initial, loading }
+enum AuthenticateUserState {
+  loginSuccess,
+  registrationSuccess,
+  user_exists,
+  failed,
+  initial,
+  loading
+}

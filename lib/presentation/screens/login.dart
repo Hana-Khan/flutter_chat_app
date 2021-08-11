@@ -33,7 +33,7 @@ class _LoginUserState extends State<LoginUser> {
     return BlocConsumer<AuthenticateUserCubit, AuthenticateUserState>(
       listener: (context, state) {
         switch (state) {
-          case AuthenticateUserState.success:
+          case AuthenticateUserState.loginSuccess:
             showSnackBar(
                 'Login Successful ${context.read<AuthenticateUserCubit>().myUser!.email}');
             Navigator.push(

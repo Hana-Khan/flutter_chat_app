@@ -36,7 +36,7 @@ class _RegisterUserState extends State<RegisterUser> {
     return BlocConsumer<AuthenticateUserCubit, AuthenticateUserState>(
       listener: (context, state) {
         switch (state) {
-          case AuthenticateUserState.success:
+          case AuthenticateUserState.registrationSuccess:
             showSnackBar(
                 'Registration Successful ${context.read<AuthenticateUserCubit>().myUser!.email}');
             break;
@@ -121,9 +121,13 @@ class _RegisterUserState extends State<RegisterUser> {
                             ],
                           ),
                     onPressed: () {
-                      context.read<AuthenticateUserCubit>().loginUser(
+                      context.read<AuthenticateUserCubit>().registerUser(
                           email: _emailController.text,
-                          password: _passwordController.text);
+                          password: _passwordController.text,
+                          name: _nameController.text,
+                          contactNo: _phoneNumberController.text,
+                          gender: _genderController.text,
+                          description: _descriptionController.text);
                     },
                   ),
                 ),
