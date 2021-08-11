@@ -3,23 +3,24 @@ import 'package:equatable/equatable.dart';
 class MyUser extends Equatable {
   /// {@macro user}
   const MyUser(
-      {required this.id,
-      this.email,
-      this.name,
-      this.about,
-      this.contactNumber,
-      this.gender});
+      {required this.userId,
+      this.userEmail,
+      this.userName,
+      this.userAbout,
+      this.userContactNumber,
+      this.userGender});
 
-  final String? email;
+  final String? userEmail;
 
-  final String id;
+  final String userId;
 
-  final String? name;
+  final String? userName;
 
-  final String? gender;
-  final String? contactNumber;
-  final String? about;
+  final String? userGender;
+  final String? userContactNumber;
+  final String? userAbout;
 
   @override
-  List<Object?> get props => [email, id, name, contactNumber, gender, about];
+  List<Object?> get props =>
+      [userEmail, userId, userName, userContactNumber, userGender, userAbout];
 }

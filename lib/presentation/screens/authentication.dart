@@ -38,12 +38,12 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
           case AuthenticateUserState.loginSuccess:
             if (login) {
               showSnackBar(
-                  'Login Successful ${context.read<AuthenticateUserCubit>().myUser!.email}');
+                  'Login Successful ${context.read<AuthenticateUserCubit>().myUser!.userEmail}');
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => ChatScreen()));
             } else {
               showSnackBar(
-                  'Registration Successful ${context.read<AuthenticateUserCubit>().myUser!.email}');
+                  'Registration Successful ${context.read<AuthenticateUserCubit>().myUser!.userEmail}');
             }
             break;
           case AuthenticateUserState.failed:

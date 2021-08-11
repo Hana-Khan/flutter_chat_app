@@ -1,5 +1,3 @@
-
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/presentation/screens/screen_home.dart';
 import 'package:flutter_chat_app/presentation/screens/screen_inbox.dart';
@@ -8,12 +6,11 @@ import 'package:flutter_chat_app/utilities/SizeConfig.dart';
 import 'package:flutter_chat_app/utilities/colors.dart';
 
 class BottomNavigation extends StatefulWidget {
-
   @override
   _BottomNavigationState createState() => _BottomNavigationState();
 }
-class _BottomNavigationState extends State<BottomNavigation> {
 
+class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -23,40 +20,40 @@ class _BottomNavigationState extends State<BottomNavigation> {
       notchMargin: 3.0,
       child: Container(
         height: SizeConfig.convertHeight(context, 46),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          IconButton(
-            iconSize: 30.0,
-            icon: Icon(Icons.person,color: grayish),
-            onPressed: () {
-              Navigator.push(
-                context, 
-                MaterialPageRoute(builder: (context) => UserProfile()),
-              );
-            },
-          ),
-          IconButton(
-            iconSize: 30.0,
-            icon: Icon(Icons.home,color: grayish),
-            onPressed: () {
-              Navigator.push(
-                context, 
-                MaterialPageRoute(builder: (context) => HomeScreen()),
-              );
-            },
-          ),
-          IconButton(
-            iconSize: 30.0,
-            icon: Icon(Icons.chat_bubble,color: grayish),
-            onPressed: () {
-              Navigator.push(
-                context, 
-                MaterialPageRoute(builder: (context) => InboxScreen()),
-              );
-            },
-          )
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            IconButton(
+              iconSize: 30.0,
+              icon: Icon(Icons.person, color: grayish),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => UserProfile()),
+                );
+              },
+            ),
+            IconButton(
+              iconSize: 30.0,
+              icon: Icon(Icons.home, color: grayish),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              },
+            ),
+            IconButton(
+              iconSize: 30.0,
+              icon: Icon(Icons.chat_bubble, color: grayish),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => InboxScreen()),
+                );
+              },
+            )
           ],
         ),
       ),
@@ -84,12 +81,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
 //             return InboxScreen();
 //             break;
 
-
 //           default:
 //             return HomeScreen();
 //         }
 //     }
-
 
 // @override
 //   Widget build(BuildContext context) {
@@ -135,6 +130,5 @@ class _BottomNavigationState extends State<BottomNavigation> {
 //       ),
 //     ));
 //   }
-
 
 // }

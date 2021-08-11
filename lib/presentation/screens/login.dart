@@ -35,7 +35,7 @@ class _LoginUserState extends State<LoginUser> {
         switch (state) {
           case AuthenticateUserState.loginSuccess:
             showSnackBar(
-                'Login Successful ${context.read<AuthenticateUserCubit>().myUser!.email}');
+                'Login Successful ${context.read<AuthenticateUserCubit>().myUser!.userEmail}');
             Navigator.push(
               context,
               MaterialPageRoute(

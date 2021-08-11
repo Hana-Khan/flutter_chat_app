@@ -38,7 +38,7 @@ class _RegisterUserState extends State<RegisterUser> {
         switch (state) {
           case AuthenticateUserState.registrationSuccess:
             showSnackBar(
-                'Registration Successful ${context.read<AuthenticateUserCubit>().myUser!.email}');
+                'Registration Successful ${context.read<AuthenticateUserCubit>().myUser!.userEmail}');
             break;
           case AuthenticateUserState.failed:
             showSnackBar('Failed');

@@ -20,7 +20,8 @@ class UserAuthenticationRepo {
           .signInWithEmailAndPassword(email: email, password: password);
       authRegistrationListener.loginSuccess();
       return MyUser(
-          id: userCredential.user!.uid, email: userCredential.user!.email);
+          userId: userCredential.user!.uid,
+          userEmail: userCredential.user!.email);
     } on FirebaseException catch (e) {
       authRegistrationListener.failed();
     }
@@ -53,7 +54,8 @@ class UserAuthenticationRepo {
       authRegistrationListener.registrationSuccess();
 
       return MyUser(
-          id: userCredential.user!.uid, email: userCredential.user!.email);
+          userId: userCredential.user!.uid,
+          userEmail: userCredential.user!.email);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         //authRegistrationListener.weakPassword();
