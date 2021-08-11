@@ -2,9 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat_app/constants.dart';
 import 'package:flutter_chat_app/cubits/authentication/authentication_cubit.dart';
+import 'package:flutter_chat_app/cubits/userprofile_cubit/profile_cubit.dart';
+import 'package:flutter_chat_app/cubits/userprofile_cubit/profile_state.dart';
+import 'package:flutter_chat_app/cubits/userprofile_cubit/user_cubit.dart';
+import 'package:flutter_chat_app/cubits/userprofile_cubit/user_state.dart';
 import 'package:flutter_chat_app/presentation/screens/login.dart';
 
-class UserProfile extends StatelessWidget {
+class UserProfile extends StatefulWidget {
+
+  @override
+  _UserProfileState createState() => _UserProfileState();
+}
+
+class _UserProfileState extends State<UserProfile> {
+  
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    BlocProvider.of<ProfileCubit>(context).getUser();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,78 +48,109 @@ class UserProfile extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: [
-              Container(
-                width: double.infinity,
-                height: 200,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Center(
-                        child: CircleAvatar(
-                      radius: 70,
-                    )),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Musa',
-                      style: kTextFieldStyle.copyWith(
-                          fontSize: 30, color: Colors.black),
-                    )
-                  ],
+      body: 
+      BlocBuilder<ProfileCubit, ProfileState>(
+        builder: (context, state) {
+          // if(state == UserCubitState.loadingState){
+          //   return Center(
+          //     child: CircularProgressIndicator(),
+          //   );
+          // }
+          // else if (state == UserCubitState.userLoadingFailed) {
+          //   return Center(
+          //     child: Icon(Icons.close),
+          //   );
+          // }
+          // else if (state == UserCubitState.userInfoLoaded) {
+          //   final user = state.user;
+          if (state is ProfileLoadingState) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is FailedToLoadProfile) {
+            return Center(
+              child: Icon(Icons.close),
+            );
+          } else if (state is ProfileLoadedState) {
+            final user = state.user;
+              return SingleChildScrollView(
+                child: Container(
+                  child: Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: 200,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Center(
+                                child: CircleAvatar(
+                              radius: 70,
+                            )),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              user.userName.toString(),
+                              style: kTextFieldStyle.copyWith(
+                                  fontSize: 30, color: Colors.black),
+                            )
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+                        child: Column(
+                          children: [
+                            ProfileDetail(
+                              textDetail: 'Email',
+                              textDetailValue: user.userEmail.toString(),
+                              icon: Icons.mail_outline,
+                            ),
+                            Divider(
+                              thickness: 1,
+                              height: 30,
+                            ),
+                            ProfileDetail(
+                              textDetail: 'Gender',
+                              textDetailValue: user.userGender.toString(),
+                              icon: Icons.male,
+                            ),
+                            Divider(
+                              thickness: 1,
+                              height: 30,
+                            ),
+                            ProfileDetail(
+                              textDetail: 'Contact Number',
+                              textDetailValue: user.userContactNumber.toString(),
+                              icon: Icons.phone_android_outlined,
+                            ),
+                            Divider(
+                              thickness: 1,
+                              height: 30,
+                            ),
+                            ProfileDetail(
+                              textDetail: 'About',
+                              textDetailValue:user.userAbout.toString(),
+                              icon: Icons.contact_mail_outlined,
+                            ),
+                            Divider(
+                              thickness: 1,
+                              height: 30,
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-                child: Column(
-                  children: [
-                    ProfileDetail(
-                      textDetail: 'Email',
-                      textDetailValue: 'abc@gmail.com',
-                      icon: Icons.mail_outline,
-                    ),
-                    Divider(
-                      thickness: 1,
-                      height: 30,
-                    ),
-                    ProfileDetail(
-                      textDetail: 'Gender',
-                      textDetailValue: 'Male',
-                      icon: Icons.male,
-                    ),
-                    Divider(
-                      thickness: 1,
-                      height: 30,
-                    ),
-                    ProfileDetail(
-                      textDetail: 'Contact Number',
-                      textDetailValue: '0312-1234567',
-                      icon: Icons.phone_android_outlined,
-                    ),
-                    Divider(
-                      thickness: 1,
-                      height: 30,
-                    ),
-                    ProfileDetail(
-                      textDetail: 'About',
-                      textDetailValue: 'Flutter Developer',
-                      icon: Icons.contact_mail_outlined,
-                    ),
-                    Divider(
-                      thickness: 1,
-                      height: 30,
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
+              );
+          }
+          else {
+            return Container();
+          }
+        }
       ),
     );
   }

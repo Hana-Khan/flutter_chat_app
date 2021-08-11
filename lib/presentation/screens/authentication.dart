@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat_app/constants.dart';
 import 'package:flutter_chat_app/cubits/authentication/authentication_cubit.dart';
-import 'package:flutter_chat_app/presentation/screens/screen_chat.dart';
-import 'package:flutter_chat_app/presentation/screens/screen_inbox.dart';
+import 'package:flutter_chat_app/presentation/screens/chat.dart';
+import 'package:flutter_chat_app/presentation/screens/inbox.dart';
 import 'package:flutter_chat_app/presentation/widgets/clipper.dart';
 
 class AuthenticationScreen extends StatefulWidget {

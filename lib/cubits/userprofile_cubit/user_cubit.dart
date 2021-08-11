@@ -1,8 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat_app/cubits/userprofile_cubit/user_state.dart';
+import 'package:flutter_chat_app/data_repo/models/user_model.dart';
+import 'package:flutter_chat_app/data_repo/repositories/user_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 abstract class UserListener {
   void usersLoaded();
+  void userLoading();
   void userInfoLoaded();
   void failToLoadUser();
   void userUpdated();
@@ -10,11 +17,30 @@ abstract class UserListener {
   void noUsers();
 }
 
-class UserCubit extends Cubit<UserState> implements UserListener {
-  UserCubit(UserState initialState) : super(initialState);
-
-
+class UserCubit extends Cubit<UserCubitState> implements UserListener {
+  final userRepository = UserRepository();
+  UserCubit(UserCubitState initialState) : super(initialState);
+  Future<SharedPreferences> _pref = SharedPreferences.getInstance();
+ 
   getListOfUsers() {}
+
+
+  void setUserSharedPref() async{
+    final user =await userRepository.getUserInfo();
+    final SharedPreferences prefs = await _pref;
+    await prefs.setString('userData', jsonEncode(user));
+  }
+
+
+
+  Future<MyUser>getUserSharedPref() async {
+    final SharedPreferences prefs = await _pref;
+    Map json = jsonDecode(prefs.getString('userData')!);
+    final user = MyUser.fromJson(json);
+    return user;
+
+  }
+  
 
   @override
   void failToLoadUser() {
@@ -35,7 +61,13 @@ class UserCubit extends Cubit<UserState> implements UserListener {
   void userInfoLoaded() {
 
     // TODO: implement userInfoLoaded
-    emit(UserState.userInfoLoaded);
+    try {
+    final user=userRepository.getUserInfo();
+    emit(UserCubitState.userInfoLoaded);
+    }catch(e){
+      emit(UserCubitState.userLoadingFailed);
+    }
+
   }
 
   @override
@@ -46,5 +78,10 @@ class UserCubit extends Cubit<UserState> implements UserListener {
   @override
   void usersLoaded() {
     // TODO: implement usersLoaded
+  }
+
+  @override
+  void userLoading() {
+    // TODO: implement userLoading
   }
 }
