@@ -27,9 +27,9 @@ class MyUser extends Equatable {
     userId = snapshot['userId'] ?? '';
     userName = snapshot['userName'] ?? '';
     userEmail = snapshot['userEmail'] ?? '';
-    userImage = snapshot['userImage'] ?? '';
-    userGender = snapshot['Gender'] ?? '';
-    userAbout = snapshot['bioText'] ?? '';
+    userImage = snapshot['userContactNo'] ?? '';
+    userGender = snapshot['userGender'] ?? '';
+    userAbout = snapshot['userAbout'] ?? '';
   }
 
   Map<String, dynamic> toMap() {
@@ -43,3 +43,10 @@ class MyUser extends Equatable {
     };
   }
 }
+
+// userId = snapshot.get('userId') ?? '';
+// userName = snapshot.get('userName') ?? '';
+// userEmail = snapshot.get('userEmail') ?? '';
+// userImage = snapshot.get('userGender') ?? '';
+// userGender = snapshot.get('userContactNo') ?? '';
+// userAbout = snapshot.get('userAbout') ?? '';

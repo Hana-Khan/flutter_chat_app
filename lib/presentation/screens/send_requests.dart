@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat_app/constants.dart';
+import 'package:flutter_chat_app/cubits/userprofile_cubit/user_cubit.dart';
+import 'package:flutter_chat_app/cubits/userprofile_cubit/user_state.dart';
+import 'package:flutter_chat_app/data_repo/models/user_model.dart';
 import 'package:flutter_chat_app/utilities/SizeConfig.dart';
 import 'package:flutter_chat_app/utilities/colors.dart';
 
@@ -11,31 +15,65 @@ class SendRequestScreen extends StatefulWidget {
 }
 
 class _SendRequestScreenState extends State<SendRequestScreen> {
+  UserCubit? userCubit;
+  List<MyUser>? usersList;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    userCubit = BlocProvider.of<UserCubit>(context);
+    userCubit!.getListOfUsers();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    userCubit!.onClose();
   }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        child: ListView.separated(
-            separatorBuilder: (context, index) => SizedBox(
-                  height: SizeConfig.convertHeight(context, 7),
-                ),
-            physics: ScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            itemCount: 12,
-            itemBuilder: (BuildContext context, int index) {
-              return SendRequestCard();
-            }));
+        child: BlocBuilder<UserCubit, UserCubitState>(
+      bloc: userCubit,
+      builder: (context, state) {
+        if (state == UserCubitState.usersLoaded) {
+          usersList = userCubit!.usersList;
+          return ListView.separated(
+              separatorBuilder: (context, index) => SizedBox(
+                    height: SizeConfig.convertHeight(context, 7),
+                  ),
+              physics: ScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: usersList!.length,
+              itemBuilder: (BuildContext context, int index) {
+                return SendRequestCard(
+                  userName: usersList![index].userName!,
+                  userBio: usersList![index].userAbout!,
+                );
+              });
+        } else if (state == UserCubitState.loading) {
+          return CircularProgressIndicator();
+        } else {
+          return Center(
+            child: Text('Error'),
+          );
+        }
+      },
+    ));
   }
 }
 
 class SendRequestCard extends StatelessWidget {
-  const SendRequestCard({Key? key}) : super(key: key);
+  final String userName;
+  final String userBio;
+
+  const SendRequestCard(
+      {Key? key, required this.userName, required this.userBio})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -74,12 +112,12 @@ class SendRequestCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'User name',
+                            userName,
                             textAlign: TextAlign.left,
                             style: kTitleTextStyle,
                           ),
                           Text(
-                            'User Bio',
+                            userBio,
                             textAlign: TextAlign.left,
                             style: ksubtitleTextStyle,
                           ),

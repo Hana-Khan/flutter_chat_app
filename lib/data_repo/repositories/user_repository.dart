@@ -26,6 +26,7 @@ class UserRepository {
   // }
 
   Stream<List<MyUser>> getAllUsers() {
+    print('called');
     return userCollection.snapshots().map((snapshot) {
       return snapshot.docs
           .map((usersDocs) => MyUser.fromSnapshot(usersDocs))

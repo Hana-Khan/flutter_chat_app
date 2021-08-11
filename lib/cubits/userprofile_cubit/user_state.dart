@@ -17,4 +17,5 @@ enum UserCubitState {
   noUsers,
   userUpdated,
   userDeleted,
+  loading
 }
