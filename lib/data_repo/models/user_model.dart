@@ -8,7 +8,7 @@ class MyUser extends Equatable {
   String? userImage;
   String? userAbout;
   String? userGender;
-  String? userContactNumber;
+  String? userContactNo;
   // List<MyUser>? friends = [];
 
   MyUser(
@@ -17,19 +17,19 @@ class MyUser extends Equatable {
       this.userName,
       this.userEmail,
       this.userAbout,
-      this.userContactNumber,
+      this.userContactNo,
       this.userGender,
     });
 
   @override
   List<Object?> get props =>
-      [userEmail, userId, userName, userContactNumber, userGender, userAbout];
+      [userEmail, userId, userName, userContactNo, userGender, userAbout];
 
   MyUser.fromSnapshot(DocumentSnapshot snapshot) {
     userId = snapshot['userId'] ?? '';
     userName = snapshot['userName'] ?? '';
     userEmail = snapshot['userEmail'] ?? '';
-    userImage = snapshot['userContactNo'] ?? '';
+    userContactNo = snapshot['userContactNo'] ?? '';
     userGender = snapshot['userGender'] ?? '';
     userAbout = snapshot['userAbout'] ?? '';
   }
@@ -42,6 +42,7 @@ class MyUser extends Equatable {
       'userImage': userImage,
       'userGender': userGender,
       'userAbout': userAbout,
+      'userContactNo':userContactNo
     };
   }
 
@@ -49,15 +50,8 @@ class MyUser extends Equatable {
    userId = snapshot['userId'] ?? '';
     userName = snapshot['userName'] ?? '';
     userEmail = snapshot['userEmail'] ?? '';
-    userImage = snapshot['userContactNo'] ?? '';
+    userContactNo = snapshot['userContactNo'] ?? '';
     userGender = snapshot['userGender'] ?? '';
     userAbout = snapshot['userAbout'] ?? '';
   }
 }
-
-// userId = snapshot.get('userId') ?? '';
-// userName = snapshot.get('userName') ?? '';
-// userEmail = snapshot.get('userEmail') ?? '';
-// userImage = snapshot.get('userGender') ?? '';
-// userGender = snapshot.get('userContactNo') ?? '';
-// userAbout = snapshot.get('userAbout') ?? '';

@@ -7,6 +7,7 @@ import 'package:flutter_chat_app/cubits/userprofile_cubit/profile_state.dart';
 import 'package:flutter_chat_app/cubits/userprofile_cubit/user_cubit.dart';
 import 'package:flutter_chat_app/cubits/userprofile_cubit/user_state.dart';
 import 'package:flutter_chat_app/presentation/screens/login.dart';
+import 'package:flutter_chat_app/presentation/widgets/navigation_bar.dart';
 
 class UserProfile extends StatefulWidget {
 
@@ -26,6 +27,7 @@ class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigation(),
       appBar: AppBar(
         elevation: 3.0,
         title: Text(
@@ -51,18 +53,6 @@ class _UserProfileState extends State<UserProfile> {
       body: 
       BlocBuilder<ProfileCubit, ProfileState>(
         builder: (context, state) {
-          // if(state == UserCubitState.loadingState){
-          //   return Center(
-          //     child: CircularProgressIndicator(),
-          //   );
-          // }
-          // else if (state == UserCubitState.userLoadingFailed) {
-          //   return Center(
-          //     child: Icon(Icons.close),
-          //   );
-          // }
-          // else if (state == UserCubitState.userInfoLoaded) {
-          //   final user = state.user;
           if (state is ProfileLoadingState) {
             return Center(
               child: CircularProgressIndicator(),
@@ -85,7 +75,8 @@ class _UserProfileState extends State<UserProfile> {
                           children: [
                             Center(
                                 child: CircleAvatar(
-                              radius: 70,
+                                  backgroundImage: AssetImage('assets/images/profile.jpg'),
+                                radius: 70,
                             )),
                             SizedBox(
                               height: 10,
@@ -123,7 +114,7 @@ class _UserProfileState extends State<UserProfile> {
                             ),
                             ProfileDetail(
                               textDetail: 'Contact Number',
-                              textDetailValue: user.userContactNumber.toString(),
+                              textDetailValue: user.userContactNo.toString(),
                               icon: Icons.phone_android_outlined,
                             ),
                             Divider(

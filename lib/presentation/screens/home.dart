@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_app/presentation/screens/requests.dart';
+import 'package:flutter_chat_app/presentation/screens/friend_requests.dart';
 import 'package:flutter_chat_app/presentation/screens/send_requests.dart';
 import 'package:flutter_chat_app/presentation/widgets/navigation_bar.dart';
 import 'package:flutter_chat_app/presentation/widgets/search_bar.dart';

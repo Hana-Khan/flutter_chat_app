@@ -24,16 +24,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            IconButton(
-              iconSize: 30.0,
-              icon: Icon(Icons.person, color: grayish),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => UserProfile()),
-                );
-              },
-            ),
+            
             IconButton(
               iconSize: 30.0,
               icon: Icon(Icons.home, color: grayish),
@@ -53,7 +44,17 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   MaterialPageRoute(builder: (context) => InboxScreen()),
                 );
               },
-            )
+            ),
+            IconButton(
+              iconSize: 30.0,
+              icon: Icon(Icons.person, color: grayish),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => UserProfile()),
+                );
+              },
+            ),
           ],
         ),
       ),

@@ -41,9 +41,11 @@ class _SendRequestScreenState extends State<SendRequestScreen> {
         if (state == UserCubitState.usersLoaded) {
           usersList = userCubit!.usersList;
           return ListView.separated(
-              separatorBuilder: (context, index) => SizedBox(
-                    height: SizeConfig.convertHeight(context, 7),
-                  ),
+            separatorBuilder: (context, index) => 
+              Divider(thickness: 1,),
+              // SizedBox(
+              //   height: SizeConfig.convertHeight(context, 4),
+              // ),
               physics: ScrollPhysics(),
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
@@ -79,11 +81,11 @@ class SendRequestCard extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Container(
-          height: SizeConfig.convertHeight(context, 120),
+          height: SizeConfig.convertHeight(context, 100),
           width: SizeConfig.convertWidth(context, 100),
           child: Card(
             color: white,
-            elevation: 0.5,
+            elevation: 0.1,
             shape: RoundedRectangleBorder(
               borderRadius: const BorderRadius.all(
                 Radius.circular(8.0),
@@ -98,11 +100,9 @@ class SendRequestCard extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Image.asset(
-                        "assets/images/profile.jpg",
-                        height: SizeConfig.convertHeight(context, 50),
-                        width: SizeConfig.convertWidth(context, 50),
-                        fit: BoxFit.cover,
+                      CircleAvatar(
+                        radius: 40,
+                        backgroundImage: AssetImage("assets/images/profile.jpg",),
                       ),
                       SizedBox(
                         width: SizeConfig.convertWidth(context, 15),
@@ -126,21 +126,23 @@ class SendRequestCard extends StatelessWidget {
                     ],
                   ),
                   Container(
-                    width: SizeConfig.convertWidth(context, 35),
-                    height: SizeConfig.convertHeight(context, 29),
-                    alignment: Alignment.topCenter,
+                    width: SizeConfig.convertWidth(context, 41),
+                    height: SizeConfig.convertHeight(context, 32),
+                    alignment: Alignment.center,
                     decoration: BoxDecoration(
+                      border: Border.all(color: grayish),
                       borderRadius: BorderRadius.all(
                         Radius.circular(30.0),
+                        
                       ),
-                      color: gray,
+                      color: whitish,
                     ),
                     child: IconButton(
                       highlightColor: Colors.red.withOpacity(0.4),
                       icon: Icon(
-                        Icons.add,
+                        Icons.person_add_alt_1_outlined,
                         color: grayish,
-                        size: 20,
+                        size: 25,
                       ),
                       onPressed: () {},
                     ),

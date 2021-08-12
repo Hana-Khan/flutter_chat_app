@@ -56,8 +56,8 @@ class UserRepository {
   Stream<List<MyUser>> getAllUsers() {
     return userCollection.snapshots().map((snapshot) {
       return snapshot.docs
-          .map((usersDocs) => MyUser.fromSnapshot(usersDocs))
-          .toList();
+        .map((usersDocs) => MyUser.fromSnapshot(usersDocs))
+        .toList();
     });
   }
 

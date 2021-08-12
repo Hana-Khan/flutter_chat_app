@@ -20,6 +20,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
+        backgroundColor: screenBackground,
         bottomNavigationBar: BottomNavigation(),
         body: SafeArea(
         child: SingleChildScrollView(
@@ -82,10 +83,10 @@ class _buildMessageBox extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomLeft,
       child: Container(
-        margin: EdgeInsets.all(8),
+        margin: EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: Colors.white,
-          border: Border.all(color: Theme.of(context).accentColor),
+          border: Border.all(color: grayish),
           borderRadius: BorderRadius.all(Radius.circular(4.0)),
         ),
         child: Padding(

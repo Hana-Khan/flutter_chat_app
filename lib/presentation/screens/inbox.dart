@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants.dart';
 import 'package:flutter_chat_app/presentation/screens/chat.dart';
-import 'package:flutter_chat_app/presentation/widgets/clipper.dart';
 import 'package:flutter_chat_app/presentation/widgets/navigation_bar.dart';
 import 'package:flutter_chat_app/utilities/SizeConfig.dart';
 import 'package:flutter_chat_app/utilities/colors.dart';
@@ -38,7 +37,7 @@ class _InboxScreenState extends State<InboxScreen> {
                     height: SizeConfig.convertHeight(context, 50),
                     child: Container(
                       padding: EdgeInsets.all(10),
-                      child: Text('Inbox',
+                      child: Text('Messages',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'Montserrat',
@@ -54,15 +53,25 @@ class _InboxScreenState extends State<InboxScreen> {
                   Container(
                     height: SizeConfig.convertHeight(context, 500),
                     width: SizeConfig.convertWidth(context, 389),
-                    child: ListView.builder(
-                        padding: EdgeInsets.only(left: 10, right: 8),
-                        itemCount: 10,
-                        itemBuilder: (context, int index) {
+                    child: ListView.separated(
+                      itemBuilder:  (context, int index) {
                           return ConversationUser(
                             userId: '123',
                             userName: 'Hina',
+                            lastMessage:'Nice to meet you!'
                           );
-                        }),
+                        }, 
+                        separatorBuilder:(context, index){
+                          return SizedBox(
+                            height: SizeConfig.convertHeight(context, 5),
+                            child: Divider(
+                              color: Colors.grey.shade700,
+                              height: 1,
+                            ),
+                          );
+                        },
+                      itemCount: 4
+                    ),  
                   ),
                 ],
               ),
@@ -73,11 +82,12 @@ class _InboxScreenState extends State<InboxScreen> {
 }
 
 class ConversationUser extends StatelessWidget {
-  String? userId, userName;
+  String? userId, userName,lastMessage;
 
   ConversationUser({
     this.userId,
     this.userName,
+    this.lastMessage
   });
 
   @override
@@ -89,55 +99,48 @@ class ConversationUser extends StatelessWidget {
           MaterialPageRoute(builder: (context) => ChatScreen()),
         );
       },
-      child: Column(
-        children: <Widget>[
-          Container(
-            child: Row(
+      child: Container(
+        padding: EdgeInsets.only(left:12,right: 8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            //profle image
+            Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                //profle image
+              children: [
                 CircleAvatar(
                   radius: 30,
                   backgroundImage: AssetImage('assets/images/profile.jpg'),
                 ),
-
                 SizedBox(
                   width: 16,
                 ),
-                Container(
-                  width: SizeConfig.convertHeight(context, 50),
-                  child: Container(
-                    child: Text(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
                       userName!,
-                      style: TextStyle(
-                          color: Colors.grey.shade900,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
+                      style: kTitleTextStyle,
                     ),
-                  ),
-                ),
-
-                //time
-                Container(
-                  child: Text(
-                    '',
-                    // time[index],
-                    style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
-                  ),
+                    Text(
+                      lastMessage!,
+                      style: ksubtitleTextStyle,
+                    ),
+                  ],
                 ),
               ],
             ),
-          ),
-          SizedBox(height: 4),
-          Divider(
-            color: Colors.grey.shade700,
-            height: 1,
-          ),
-          SizedBox(
-            height: 5,
-          ),
-        ],
+            //time
+            Container(
+              alignment: Alignment.topRight,
+              child: Text(
+                '10:00',
+                style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

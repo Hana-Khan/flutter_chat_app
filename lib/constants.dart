@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_app/utilities/colors.dart';
 
 final kHeadingStyle =
     TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold, color: Colors.black);
@@ -40,4 +41,15 @@ const ksubtitleTextStyle = TextStyle(
   fontSize: 13,
   fontWeight: FontWeight.normal,
   color: Color(0xff818181)
+);
+
+const acceptBtnTextStyle = TextStyle(
+  fontSize: 13,
+  fontWeight: FontWeight.normal,
+  color: Colors.white
+);
+const deleteBtnTextStyle = TextStyle(
+  fontSize: 13,
+  fontWeight: FontWeight.normal,
+  color: Colors.grey
 );
