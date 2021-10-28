@@ -14,10 +14,8 @@ class UserRepository {
   final firestoreInstance = FirebaseFirestore.instance;
 
   final userCollection = FirebaseFirestore.instance.collection('users');
-
-  Future<void> createUserDocument(
-
-      String userId, name, email, gender, contactNo, description) async {
+  Future<void> createUserDocument(String userId, name, email, gender, contactNo, description)
+  async {
     userCollection.doc(userId).set({
       'userId': userId,
       'userName': name,
@@ -27,13 +25,16 @@ class UserRepository {
       'userAbout': description
     });
   }
-
+  // Donation newDonation = Donation(dialogWidget.firstName, type: dialogWidget.character);
+  // Future<DocumentReference> addDonation(Donation donation) {
+  //   return donationCollecton.add(pet.toJson());
+  // }
 
   Future<MyUser> getUserInfo() async {
     print('get userinfo called');
     // final String? uid=UserAuthenticationRepo().userData();
     // print(uid);
-    DocumentSnapshot userDetails=await userCollection.doc('F4AlW64oqbeL4j2Fjjc2xn2FPHc2').get();
+    DocumentSnapshot userDetails=await userCollection.doc('RlhhRyawRBeDdoblTj9CEQB5Xcv1').get();
     print('userdeatils');
     final user=MyUser.fromSnapshot(userDetails);
     print(user);
